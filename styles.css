@@ -27,6 +27,22 @@ body {
  * ----------------------- 
  */
 
+.aic__btn {
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border: none;
+
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255,214,73); 
+    background: none;
+    cursor: pointer;
+    outline: inherit;}
+
+.aic_btn:active {
+    transform: translateY(-2px);
+}
+
 .aic__content {
     position: relative;
 
@@ -88,9 +104,23 @@ body {
     height: 100%; 
 }
 
-.aic__episodes--modal--container {
-    width: 85%;
+.aic__ep--circle {
+    z-index: 2;
+}
+
+.aic__modals {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.aic__modals--wrapper {
+    width: 100%;
     height: 85%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     margin: 20px auto;
 
@@ -99,6 +129,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#aic__modals--btn-close {
+    z-index: 99999;
+}
+
 
 /* 
  * -----------------------
@@ -160,11 +195,11 @@ body {
 }
 
 .modal {
-    z-index: 2;
+    z-index: 9999;
 }
 
 .overlay {
-    z-index: 1;
+    z-index: 9999;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -172,7 +207,7 @@ body {
     right: 0;
     
     width: 100%;
-    height: 100%;
+    height: 100vh;
 
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);

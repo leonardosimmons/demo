@@ -20,6 +20,9 @@ const BASE_URL = 'public'
 const EPISODE_COUNT_CURRENT = 2;
 const EPISODE_COUNT_TOTAL = 8;
 
+/* Data */
+const EPISODE_LINKS = ['https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5',];
+
 /* 
  * -----------------------
  * Variables
@@ -68,67 +71,117 @@ function generateEpisodes() {
 
     /* Generate episode section blocks & coresponding modal */
     [...Array(EPISODE_COUNT_TOTAL)].forEach((_, index) => {
-        const episode = index + 1;
-        const modal = generateEpisodeModal(episode);
+        const episodeNum = index + 1;
 
         /* Builds individual episode section */
         const section = document.createElement('section');
-        section.setAttribute('id', `aic__episode-${episode}`);
+        section.setAttribute('id', `aic__episode-${episodeNum}`);
         section.classList.add('aic__ep--block');
         section.style.height = `${blockHeight}px`;
         section.innerHTML = `
-            <div class="${ episode > EPISODE_COUNT_CURRENT && 'hidden' }"">
-                <img class="aic__ep--circle" src=${asset(episode, 'circle', 'png')} />
-                <img class="aic__ep--title" src=${asset(episode, 'title', 'png')} />
+            <div class="${ episodeNum > EPISODE_COUNT_CURRENT && 'hidden' }"">
+                <img class="aic__ep--circle" src=${asset(episodeNum, 'circle', 'png')} />
+                <img class="aic__ep--title" src=${asset(episodeNum, 'title', 'png')} />
             </div>
         </div>
         `;
 
         /* Add connecting line if NOT last node*/
-        if (episode <= EPISODE_COUNT_CURRENT - 1) {
+        if (episodeNum <= EPISODE_COUNT_CURRENT - 1) {
             const mainLine = document.createElement('img');
             mainLine.classList.add(`aic__ep--line-main`);
             mainLine.setAttribute('src', `${BASE_URL}/ep-line.svg`);
             section.querySelector( 'div' ).append(mainLine);
         }
 
-        /* Adds episode data to 'Episode' global */
+        /* Generate corresponding modal and add to page */
+        const modal = generateEpisodeModal(episodeNum);
+        modals.append(modal);
+
+        /* Add event listeners */
+        const node = section.querySelector( '.aic__ep--circle' );
+        node.addEventListener('click', () => openEpisodeModal(modal));
+        modals.addEventListener('click', () => {
+            closeEpisodeModal(modal)
+        });
+
+
+        /* Adds episode section to the page */
+        content.querySelector( '.aic__episodes' ).append(section);
+        
+        /* Adds episode data to 'Episodes' global */
         Episodes.push({
             number: section, 
             element: {
                 wrapper: section,
                 title: section.querySelector( '.aic__ep--title' ),
                 circle: section.querySelector( '.aic__ep--circle' ),
+                modal,
                 line: {
                     main: section.querySelector( '.aic__ep--line-main' )
                 }
             }
         });
-
-        /* Adds episode section to the page */
-        content.querySelector( '.aic__episodes' ).append(section);
-        
-        /* Adds corresponding modal to page */
-        modals.append(modal);
     });
+
+    /* adds close button to modal overlay */
+    const closeBtn = document.querySelector( '#aic__modals--btn-close' );
+    closeBtn.addEventListener('click', () => {
+        Episodes.forEach(episode => closeEpisodeModal(episode.element.modal))
+    });
+    modals.append(closeBtn)
 }
 
-function generateEpisodeModal(episode) {
+function generateEpisodeModal(episodeNum) {
     const modal = document.createElement( 'div' );
-    modal.setAttribute('id', `episode-${episode}-modal`);
+    modal.setAttribute('id', `aic__episode-${episodeNum}--modal`);
     modal.classList.add('modal');
     modal.classList.add('hidden');
-    // modal.innerHTML = `
-    //     <div class="aic__episodes--modal--container">
-    //         <div style="padding:56.25% 0 0 0;position:relative;">
-    //             <iframe src="https://player.vimeo.com/video/684742502?h=c9d0e8ed69&amp;byline=0" style="position:absolute;top:0;width:95%;height:100%;margin: 0 auto;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="">
-    //             </iframe>
-    //         </div>
-    //         <script src="https://player.vimeo.com/api/player.js"></script>
-    //     </div>
-    // `;
+
+     modal.innerHTML = `
+        <div class="aic__modals--wrapper">
+            <iframe
+                title="vimeo-player" 
+                src=${EPISODE_LINKS[episodeNum - 1]} 
+                frameborder="0"
+                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:95%;height:100%;margin: 0 auto;"  
+                allowfullscreen>
+            </iframe>
+        </div>
+    `;
+
+    const iframe = modal.querySelector( 'iframe' );
+    iframe.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape' && !modal.classList.contains('hidden'))
+            closeEpisodeModal(modal)
+    });
+
     return modal;
 }
+
+function openEpisodeModal(modal) {
+    if (modals.classList.contains('hidden') && modal.classList.contains('hidden')) {
+        modals.classList.remove('hidden');
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeEpisodeModal(modal) {
+    if (!modals.classList.contains('hidden') && !modal.classList.contains('hidden')) {
+        modals.classList.add('hidden');
+        modal.classList.add('hidden');
+    }
+}
+
+/* 
+ * -----------------------
+ * Event Listeners
+ * ----------------------- 
+ */
+
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') Episodes.forEach(episode => closeEpisodeModal(episode.element.modal));
+});
 
 /* 
  * -----------------------
@@ -192,25 +245,30 @@ function introScene() {
 /* Episode 1 */
 function episodeOneScene() {
     appearOnScroll(Episodes[0].element.circle, intro, { 
-        offset: 130
+        duration: 100,
+        offset: 150
     });
 
     appearOnScroll(Episodes[0].element.title, intro, {
-        offset: 200 
+        duration: 75,
+        offset: 235 
     });
 
     appearOnScroll(Episodes[0].element.line.main, intro, {
-        offset: 150
+        duration: 75,
+        offset: 200
     });
 }
 
 function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.circle, intro, {
-        offset: 200 
+        duration: 100,
+        offset: 220 
     });
 
     appearOnScroll(Episodes[1].element.title, intro, {
-        offset: 270
+        duration: 75,
+        offset: 275
     });
 }
 
