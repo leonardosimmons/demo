@@ -263,12 +263,12 @@ function episodeOneScene() {
 function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.circle, intro, {
         duration: 100,
-        offset: 220 
+        offset: 250 
     });
 
     appearOnScroll(Episodes[1].element.title, intro, {
         duration: 75,
-        offset: 275
+        offset: 335
     });
 }
 
