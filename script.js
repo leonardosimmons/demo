@@ -16,7 +16,8 @@ const BREAKPOINT_DESKTOP_MD = 1536;
 const BREAKPOINT_DESKTOP_LG = 2160;
 
 /* General */
-const EPISODE_COUNT_CURRENT = 2;
+const BASE_URL = 'public'
+const EPISODE_COUNT_CURRENT = 1;
 const EPISODE_COUNT_TOTAL = 8;
 
 /* 
@@ -34,16 +35,92 @@ const Episodes = [];
  */
 
 /* Intro */
-const intro = document.querySelector( '.brain__intro' );
+const intro = document.querySelector( '.aic__intro' );
 const mainTitle = intro.querySelector( 'span' );
 
 /* Content */
-const content = document.querySelector( '.brain__content' );
+const content = document.querySelector( '.aic__content' );
 const video = content.querySelector( 'video' );
 
-/* Episodes */
-const epOne = document.querySelector('#episode-1');
+/* Modals */
+const modals = document.querySelector( '.aic__modals' );
 
+/* 
+ * -----------------------
+ * Core
+ * ----------------------- 
+ */
+
+function init() {
+    generateEpisodes();
+    introScene();
+    episodeOneScene();
+}
+
+function generateEpisodes() {
+    const offSetHeight = video.offsetHeight * .7;
+    const blockHeight = offSetHeight / EPISODE_COUNT_TOTAL;
+
+    const asset = (num, kind, type) => {
+        return num <= EPISODE_COUNT_CURRENT ? `${BASE_URL}/ep-${num}-${kind}.${type}` : '';
+    }
+
+    /* Generate episode section blocks & coresponding modal */
+    [...Array(EPISODE_COUNT_TOTAL)].forEach((_, index) => {
+        const episode = index + 1;
+        const modal = generateEpisodeModal(episode);
+
+        /* Builds individual episode section */
+        const section = document.createElement('section');
+        section.setAttribute('id', `aic__episode-${episode}`);
+        section.classList.add('aic__ep--block');
+        section.style.height = `${blockHeight}px`;
+        section.innerHTML = `
+            <div class="${ episode > EPISODE_COUNT_CURRENT && 'hidden' }"">
+                <img class="aic__ep--circle" src=${asset(episode, 'circle', 'png')} />
+                <img class="aic__ep--line-thumbnail" src=${asset(episode, 'line-main', 'svg')} />
+                <img class="aic__ep--title" src=${asset(episode, 'title', 'png')} />
+            </div>
+        </div>
+        `;
+
+        /* Adds episode data to 'Episode' global */
+        Episodes.push({
+            number: section, 
+            element: {
+                wrapper: section,
+                title: section.querySelector( '.aic__ep--title' ),
+                circle: section.querySelector( '.aic__ep--circle' ),
+                line: {
+                    thumbnail: section.querySelector( '.aic__ep--line-thumbnail' )
+                }
+            }
+        });
+
+        /* Adds episode section to the page */
+        content.querySelector( '.aic__episodes' ).append(section);
+        
+        /* Adds corresponding modal to page */
+        modals.append(modal);
+    });
+}
+
+function generateEpisodeModal(episode) {
+    const modal = document.createElement('div');
+    modal.setAttribute('id', `episode-${episode}-modal`);
+    modal.classList.add('modal');
+    modal.classList.add('hidden');
+    // modal.innerHTML = `
+    //     <div class="aic__episodes--modal--container">
+    //         <div style="padding:56.25% 0 0 0;position:relative;">
+    //             <iframe src="https://player.vimeo.com/video/684742502?h=c9d0e8ed69&amp;byline=0" style="position:absolute;top:0;width:95%;height:100%;margin: 0 auto;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="">
+    //             </iframe>
+    //         </div>
+    //         <script src="https://player.vimeo.com/api/player.js"></script>
+    //     </div>
+    // `;
+    return modal;
+}
 
 /* 
  * -----------------------
@@ -51,74 +128,7 @@ const epOne = document.querySelector('#episode-1');
  * ----------------------- 
  */
 
-async function init() {
-    await generateEpisodes();
-    introScene();
-    EpisodeOneScene();
-    EpisodeTwoScene();
-}
-
-function generateEpisodeModal(epNum) {
-    const modal = document.createElement('div');
-    modal.setAttribute('id', `episode-${epNum}-modal`);
-    modal.classList.add('brain__episodes--modal');
-    modal.classList.add('hidden');
-    modal.innerHTML = `
-        <div class="brain__episodes--modal--container">
-            <div style="padding:56.25% 0 0 0;position:relative;">
-                <iframe src="https://player.vimeo.com/video/684742502?h=c9d0e8ed69&amp;byline=0" style="position:absolute;top:0;width:95%;height:100%;margin: 0 auto;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="">
-                </iframe>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
-        </div>
-    `;
-    return modal;
-}
-
-async function generateEpisodes() {
-    const offSetHeight = video.offsetHeight * .7;
-    const blockHeight = offSetHeight / EPISODE_COUNT_TOTAL;
-
-    const asset = (num, kind, type = 'png') => {
-        return num <= EPISODE_COUNT_CURRENT ? `src="public/ep-${num}-${kind}.${type}"` : '';
-    };
-
-    /* Generate episode section blocks */
-    [...Array(EPISODE_COUNT_TOTAL)].forEach((_, index) => {
-        const epNum = index + 1;
-        const el = document.createElement('section');
-        const modal = generateEpisodeModal(epNum);
-
-        el.setAttribute('id', `episode-${epNum}`);
-        el.classList.add('brain__ep--block');
-        el.style.height = `${blockHeight}px`;
-        el.innerHTML = `
-            <div>
-                <img class="brain__ep--circle ${epNum > EPISODE_COUNT_CURRENT && 'hidden' }" ${asset(epNum, 'circle', 'png')} />
-                <img class="brain__ep--main-line ${epNum > EPISODE_COUNT_CURRENT && 'hidden' }" ${ epNum === 1 && asset(epNum, 'line-main', 'svg')} />
-            </div>
-        </div>
-        `;
-
-        /* Adds episode data to 'Episode' global */
-        Episodes.push({
-            number: epNum, 
-            element: {
-                wrapper: el,
-                circle: el.querySelector('.brain__ep--circle'),
-                mainLine: el.querySelector( '.brain__ep--main-line' )
-            }
-        });
-
-        /* Adds episode section to the page */
-        content.querySelector('div.brain__episodes').append(el);
-        
-        /* Adds corresponding modal to page */
-        content.querySelector('div.brain__episodes--modals').append(modal);
-    });
-}
-
-function growOnScroll(el, trigger, opts) {
+function appearOnScroll(el, trigger, opts) {
     const tween = TweenMax.fromTo(el, 3, { opacity: 0 }, { opacity: 1 });
 
     new ScrollMagic.Scene({
@@ -128,6 +138,7 @@ function growOnScroll(el, trigger, opts) {
     })
         .offset(opts && opts.offset || 0)
         .setTween(tween)
+        .addIndicators()
         .addTo(controller)
 }
 
@@ -153,6 +164,7 @@ function viewport() {
 
 const controller = new ScrollMagic.Controller();
 
+/* Main title intro */
 function introScene() {
     const timeline = new TimelineMax();
     const textFadeAnim = TweenMax.fromTo(mainTitle, 3, { opacity: 0.3 }, { opacity: 1 });
@@ -170,24 +182,26 @@ function introScene() {
         .addTo(controller)
 }
 
-
 /* Episode 1 */
-function EpisodeOneScene() {
-    growOnScroll(Episodes[0].element.circle, content, { 
-        duration: 200,
-        offset: -600
+function episodeOneScene() {
+    appearOnScroll(Episodes[0].element.circle, intro, { 
+        duration: 50,
+        offset: 150
     });
 
-    growOnScroll(Episodes[0].element.mainLine, content, {
-        duration: 200,
-        offset: -400
+    appearOnScroll(Episodes[0].element.line.thumbnail, intro, {
+        duration: 50,
+        offset: 200 
+    });
+
+    appearOnScroll(Episodes[0].element.title, intro, {
+        duration: 50,
+        offset: 250
     });
 }
 
-/* Episode 2 */
-function EpisodeTwoScene() {
-    growOnScroll(Episodes[1].element.circle, content, {
-        duration: 400,
+function episodeTwoScene() {
+    appearOnScroll(Episodes[1].element.circle, content, {
         offset: -400
     });
 }

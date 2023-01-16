@@ -9,28 +9,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="brain__wrapper">
-        <div class="brain__intro">
-            <span id="brain__main-title"></span>
+    <div class="aic__wrapper">
+
+        <div class="aic__intro">
+            <span></span>
         </div>
 
-        <div class="brain__content">
+        <div class="aic__content">
             <video autoplay muted loop>
-                <source src="public/bg-brain-video.mp4" type="video/mp4">
+                <source src="public/brain-bg-video.mp4" type="video/mp4">
             </video>
             
-            <div class="brain__episodes">
-                <!-- Episodes will be generated via javascript -->
-            </div>
-
-            <div class="brain__episodes--modals">
-                <!-- Modals will be generated via javascript -->
-            </div>
+            <div class="aic__episodes"></div>
         </div>
-
-
-
         
+        <div class="aic__modals overlay hidden"></div>
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
