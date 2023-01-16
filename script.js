@@ -78,7 +78,6 @@ function generateEpisodes() {
         section.innerHTML = `
             <div class="${ episode > EPISODE_COUNT_CURRENT && 'hidden' }"">
                 <img class="aic__ep--circle" src=${asset(episode, 'circle', 'png')} />
-                <img class="aic__ep--line-thumbnail" src=${asset(episode, 'line-main', 'svg')} />
                 <img class="aic__ep--title" src=${asset(episode, 'title', 'png')} />
             </div>
         </div>
@@ -185,15 +184,11 @@ function introScene() {
 /* Episode 1 */
 function episodeOneScene() {
     appearOnScroll(Episodes[0].element.circle, intro, { 
-        offset: 150
-    });
-
-    appearOnScroll(Episodes[0].element.line.thumbnail, intro, {
-        offset: 200 
+        offset: 130
     });
 
     appearOnScroll(Episodes[0].element.title, intro, {
-        offset: 250
+        offset:200 
     });
 }
 
