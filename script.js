@@ -132,7 +132,7 @@ function appearOnScroll(el, trigger, opts) {
     const tween = TweenMax.fromTo(el, 3, { opacity: 0 }, { opacity: 1 });
 
     new ScrollMagic.Scene({
-        duration: opts && opts.duration || 100,
+        duration: opts && opts.duration || 0,
         triggerElement: trigger,
         triggerHook: opts && opts.triggerHook || 0
     })
@@ -185,17 +185,14 @@ function introScene() {
 /* Episode 1 */
 function episodeOneScene() {
     appearOnScroll(Episodes[0].element.circle, intro, { 
-        duration: 50,
         offset: 150
     });
 
     appearOnScroll(Episodes[0].element.line.thumbnail, intro, {
-        duration: 50,
         offset: 200 
     });
 
     appearOnScroll(Episodes[0].element.title, intro, {
-        duration: 50,
         offset: 250
     });
 }
