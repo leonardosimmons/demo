@@ -17,7 +17,7 @@ const BREAKPOINT_DESKTOP_LG = 2160;
 
 /* General */
 const BASE_URL = 'public'
-const EPISODE_COUNT_CURRENT = 1;
+const EPISODE_COUNT_CURRENT = 2;
 const EPISODE_COUNT_TOTAL = 8;
 
 /* 
@@ -55,6 +55,7 @@ function init() {
     generateEpisodes();
     introScene();
     episodeOneScene();
+    episodeTwoScene();
 }
 
 function generateEpisodes() {
@@ -83,6 +84,14 @@ function generateEpisodes() {
         </div>
         `;
 
+        /* Add connecting line if NOT last node*/
+        if (episode <= EPISODE_COUNT_CURRENT - 1) {
+            const mainLine = document.createElement('img');
+            mainLine.classList.add(`aic__ep--line-main`);
+            mainLine.setAttribute('src', `${BASE_URL}/ep-line.svg`);
+            section.querySelector( 'div' ).append(mainLine);
+        }
+
         /* Adds episode data to 'Episode' global */
         Episodes.push({
             number: section, 
@@ -91,7 +100,7 @@ function generateEpisodes() {
                 title: section.querySelector( '.aic__ep--title' ),
                 circle: section.querySelector( '.aic__ep--circle' ),
                 line: {
-                    thumbnail: section.querySelector( '.aic__ep--line-thumbnail' )
+                    main: section.querySelector( '.aic__ep--line-main' )
                 }
             }
         });
@@ -105,7 +114,7 @@ function generateEpisodes() {
 }
 
 function generateEpisodeModal(episode) {
-    const modal = document.createElement('div');
+    const modal = document.createElement( 'div' );
     modal.setAttribute('id', `episode-${episode}-modal`);
     modal.classList.add('modal');
     modal.classList.add('hidden');
@@ -137,7 +146,6 @@ function appearOnScroll(el, trigger, opts) {
     })
         .offset(opts && opts.offset || 0)
         .setTween(tween)
-        .addIndicators()
         .addTo(controller)
 }
 
@@ -188,13 +196,21 @@ function episodeOneScene() {
     });
 
     appearOnScroll(Episodes[0].element.title, intro, {
-        offset:200 
+        offset: 200 
+    });
+
+    appearOnScroll(Episodes[0].element.line.main, intro, {
+        offset: 150
     });
 }
 
 function episodeTwoScene() {
-    appearOnScroll(Episodes[1].element.circle, content, {
-        offset: -400
+    appearOnScroll(Episodes[1].element.circle, intro, {
+        offset: 200 
+    });
+
+    appearOnScroll(Episodes[1].element.title, intro, {
+        offset: 270
     });
 }
 
