@@ -28,11 +28,10 @@ body {
  */
 
 .aic__btn {
-    padding: 1rem 2rem;
-    margin-bottom: 2rem;
+    padding: 10px 16px;
     border: none;
 
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     color: rgb(255,214,73); 
     background: none;
@@ -110,8 +109,8 @@ body {
 
 .aic__modals {
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
 
 .aic__modals--wrapper {
@@ -133,7 +132,6 @@ body {
 #aic__modals--btn-close {
     z-index: 99999;
 }
-
 
 /* 
  * -----------------------
