@@ -12,12 +12,22 @@
 
 html  { 
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: sans-serif;
     color: #fff;
     background-color: #000;
+    margin: 0 auto;
+
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* 

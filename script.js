@@ -307,8 +307,18 @@ function introScene() {
     
     timeline.add(scrolLTextAnim).add(textFadeAnim).add(textDirectionAnim);
 
+    const duration = () => {
+        const width = viewport().width;
+
+        if (width < BREAKPOINT_TABLET_SM) { return 300; } else
+        if (width >= BREAKPOINT_TABLET_SM && width < BREAKPOINT_TABLET_LG) { return 400; } else
+        if (width >= BREAKPOINT_TABLET_LG && width < BREAKPOINT_DESKTOP_SM) { return 300; }else 
+        if (width >= BREAKPOINT_DESKTOP_SM && width < BREAKPOINT_DESKTOP_MD) { return 350; } else
+        if (width >= BREAKPOINT_MOBILE_MD) { return 550;}
+    }
+
     new ScrollMagic.Scene({
-        duration: viewport().width >= BREAKPOINT_TABLET_SM ? '100%' : 300, 
+        duration: duration(), 
         triggerElement: intro, 
         triggerHook: 0 
     })
