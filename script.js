@@ -20,15 +20,21 @@ const BASE_URL = 'public'
 const EPISODE_COUNT_CURRENT = 2;
 const EPISODE_COUNT_TOTAL = 8;
 
-/* Data */
+/* 
+ * -----------------------
+ * Data
+ * ----------------------- 
+ */
+
 const EPISODE_LINKS = ['https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5',];
 
 /* 
  * -----------------------
- * Variables
+ * Globals
  * ----------------------- 
  */
 
+const Controller = new ScrollMagic.Controller();
 const Episodes = [];
 
 /* 
@@ -43,10 +49,11 @@ const mainTitle = intro.querySelector( 'span' );
 
 /* Content */
 const content = document.querySelector( '.aic__content' );
-const video = content.querySelector( 'video' );
+const bgVideo = content.querySelector( 'video' );
 
 /* Modals */
 const modals = document.querySelector( '.aic__modals' );
+const closeModalBtn = document.querySelector( '#aic__modals--btn-close' );
 
 /* 
  * -----------------------
@@ -55,14 +62,21 @@ const modals = document.querySelector( '.aic__modals' );
  */
 
 function init() {
+    generatePage();
     generateEpisodes();
+
     introScene();
     episodeOneScene();
     episodeTwoScene();
 }
 
+function generatePage() {
+    /* Adds 'close modal' button to modal overlay */
+    modals.append(closeModalBtn)
+}
+
 function generateEpisodes() {
-    const offSetHeight = video.offsetHeight * .7;
+    const offSetHeight = bgVideo.offsetHeight * episodeBlockOffset();
     const blockHeight = offSetHeight / EPISODE_COUNT_TOTAL;
 
     const asset = (num, kind, type) => {
@@ -79,15 +93,27 @@ function generateEpisodes() {
         section.classList.add('aic__ep--block');
         section.style.height = `${blockHeight}px`;
         section.innerHTML = `
-            <div class="${ episodeNum > EPISODE_COUNT_CURRENT && 'hidden' }"">
+            <div ${ episodeNum > EPISODE_COUNT_CURRENT ? 'class="hidden"' : '' }>
                 <img class="aic__ep--circle" src=${asset(episodeNum, 'circle', 'png')} />
                 <img class="aic__ep--title" src=${asset(episodeNum, 'title', 'png')} />
             </div>
         </div>
         `;
 
-        /* Add connecting line if NOT last node*/
-        if (episodeNum <= EPISODE_COUNT_CURRENT - 1) {
+        /* Add connecting line if NOT last node */
+        if (episodeNum < EPISODE_COUNT_CURRENT) {
+            /* SVG capatability --WAITING FOR PHASE 2-- */
+            // const svg = document.querySelector( '.aic__ep--line' );
+            // if (svg) {
+            //     const clone = svg.cloneNode(true);
+
+            //     clone.classList.remove('hidden');
+            //     clone.classList.remove('aic__ep--line');
+            //     clone.classList.add('aic__ep--line-main');
+
+            //     section.querySelector( 'div' ).append(clone);
+            // }
+
             const mainLine = document.createElement('img');
             mainLine.classList.add(`aic__ep--line-main`);
             mainLine.setAttribute('src', `${BASE_URL}/ep-line.svg`);
@@ -105,7 +131,6 @@ function generateEpisodes() {
             closeEpisodeModal(modal)
         });
 
-
         /* Adds episode section to the page */
         content.querySelector( '.aic__episodes' ).append(section);
         
@@ -113,23 +138,16 @@ function generateEpisodes() {
         Episodes.push({
             number: section, 
             element: {
-                wrapper: section,
-                title: section.querySelector( '.aic__ep--title' ),
                 circle: section.querySelector( '.aic__ep--circle' ),
-                modal,
                 line: {
                     main: section.querySelector( '.aic__ep--line-main' )
-                }
+                },
+                title: section.querySelector( '.aic__ep--title' ),
+                wrapper: section,
+                modal,
             }
         });
     });
-
-    /* adds close button to modal overlay */
-    const closeBtn = document.querySelector( '#aic__modals--btn-close' );
-    closeBtn.addEventListener('click', () => {
-        Episodes.forEach(episode => closeEpisodeModal(episode.element.modal))
-    });
-    modals.append(closeBtn)
 }
 
 function generateEpisodeModal(episodeNum) {
@@ -175,17 +193,7 @@ function closeEpisodeModal(modal) {
 
 /* 
  * -----------------------
- * Event Listeners
- * ----------------------- 
- */
-
-document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') Episodes.forEach(episode => closeEpisodeModal(episode.element.modal));
-});
-
-/* 
- * -----------------------
- * Helpers
+ * Animations
  * ----------------------- 
  */
 
@@ -199,7 +207,73 @@ function appearOnScroll(el, trigger, opts) {
     })
         .offset(opts && opts.offset || 0)
         .setTween(tween)
-        .addTo(controller)
+        .addTo(Controller)
+}
+
+function draw(svg, trigger, opts) {
+    const path = svg.querySelector( 'path' );
+    preparePath(path);
+
+    const tween = TweenMax.to(path, 3, { strokeDashoffset: 0, ease: Linear.easeNone });
+
+    new ScrollMagic.Scene({
+        duration: opts && opts.duration || 0,
+        triggerElement: trigger,
+        triggerHook: opts && opts.triggerHook || 0
+    })
+        .offset(opts && opts.offset || 0)
+        .setTween(tween)
+        .addTo(Controller)
+}
+
+function fadeOnScroll(el, trigger, opts) {
+    const tween = TweenMax.fromTo(el, 3, { opacity: 1 }, { opacity: 0 });
+
+    new ScrollMagic.Scene({
+        duration: opts && opts.duration || 0,
+        triggerElement: trigger,
+        triggerHook: opts && opts.triggerHook || 0
+    })
+        .offset(opts && opts.offset || 0)
+        .setTween(tween)
+        .addTo(Controller)
+}
+
+/* 
+ * -----------------------
+ * Event Listeners
+ * ----------------------- 
+ */
+
+/* Closes episode modal when user presses the 'Escape' key */
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') Episodes.forEach(episode => closeEpisodeModal(episode.element.modal));
+});
+
+/* Enables 'close modal' button */
+closeModalBtn.addEventListener('click', () => {
+    Episodes.forEach(episode => closeEpisodeModal(episode.element.modal))
+});
+
+/* 
+ * -----------------------
+ * Helpers
+ * ----------------------- 
+ */
+
+function episodeBlockOffset() {
+    const vw = viewport().width;
+    
+    if (vw <= 500) { return 0.7; } else
+    if (vw > 500 && vw < 1200) { return 0.8 } else
+    if (vw >= 1200) { return 0.9 }
+}
+
+function preparePath(path) {
+    const length = path.getTotalLength();
+
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length; 
 }
 
 function viewport() {
@@ -222,15 +296,16 @@ function viewport() {
  * ----------------------- 
  */
 
-const controller = new ScrollMagic.Controller();
-
 /* Main title intro */
 function introScene() {
+    const scrollText = intro.querySelector( 'div' );
+
     const timeline = new TimelineMax();
+    const scrolLTextAnim = TweenMax.fromTo(scrollText, 1.5, { opacity: 1 }, { opacity: 0 });
     const textFadeAnim = TweenMax.fromTo(mainTitle, 3, { opacity: 0.3 }, { opacity: 1 });
     const textDirectionAnim = TweenMax.to(mainTitle, 0.5, { scale: 1.2, repeat: 5, yoyo: true });
     
-    timeline.add(textFadeAnim).add(textDirectionAnim);
+    timeline.add(scrolLTextAnim).add(textFadeAnim).add(textDirectionAnim);
 
     new ScrollMagic.Scene({
         duration: viewport().width >= BREAKPOINT_TABLET_SM ? '100%' : 300, 
@@ -239,11 +314,13 @@ function introScene() {
     })
         .setPin(intro)
         .setTween(timeline)
-        .addTo(controller)
+        .addTo(Controller)
 }
 
 /* Episode 1 */
 function episodeOneScene() {
+    const instructions = content.querySelector( 'h2' );
+
     appearOnScroll(Episodes[0].element.circle, intro, { 
         duration: 100,
         offset: 150
@@ -255,11 +332,17 @@ function episodeOneScene() {
     });
 
     appearOnScroll(Episodes[0].element.line.main, intro, {
-        duration: 75,
+        duration: 125,
         offset: 200
+    });
+
+    appearOnScroll(instructions, intro, {
+        duration: 150,
+        offset: 550 
     });
 }
 
+/* Episode 2 */
 function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.circle, intro, {
         duration: 100,
