@@ -116,7 +116,7 @@ function generateEpisodes() {
 
             const mainLine = document.createElement('img');
             mainLine.classList.add(`aic__ep--line-main`);
-            mainLine.setAttribute('src', `${BASE_URL}/ep-line.svg`);
+            mainLine.setAttribute('src', `${BASE_URL}/ep-line.png`);
             section.querySelector( 'div' ).append(mainLine);
         }
 
@@ -198,7 +198,7 @@ function closeEpisodeModal(modal) {
  */
 
 function appearOnScroll(el, trigger, opts) {
-    const tween = TweenMax.fromTo(el, 3, { opacity: 0 }, { opacity: 1 });
+    const tween = TweenMax.fromTo(el, opts && opts.tweenDuaration || 5, { opacity: 0 }, { opacity: 1 });
 
     new ScrollMagic.Scene({
         duration: opts && opts.duration || 0,
@@ -207,6 +207,7 @@ function appearOnScroll(el, trigger, opts) {
     })
         .offset(opts && opts.offset || 0)
         .setTween(tween)
+        .addIndicators()
         .addTo(Controller)
 }
 
@@ -301,7 +302,7 @@ function introScene() {
     const scrollText = intro.querySelector( 'div' );
 
     const timeline = new TimelineMax();
-    const scrolLTextAnim = TweenMax.fromTo(scrollText, 1.5, { opacity: 1 }, { opacity: 0 });
+    const scrolLTextAnim = TweenMax.fromTo(scrollText, 5, { opacity: 1 }, { opacity: 0 });
     const textFadeAnim = TweenMax.fromTo(mainTitle, 3, { opacity: 0.3 }, { opacity: 1 });
     const textDirectionAnim = TweenMax.to(mainTitle, 0.5, { scale: 1.2, repeat: 5, yoyo: true });
     
@@ -333,22 +334,22 @@ function episodeOneScene() {
 
     appearOnScroll(Episodes[0].element.circle, intro, { 
         duration: 100,
-        offset: 150
+        offset: 280
     });
 
     appearOnScroll(Episodes[0].element.title, intro, {
         duration: 75,
-        offset: 235 
+        offset: 365 
     });
 
     appearOnScroll(Episodes[0].element.line.main, intro, {
-        duration: 125,
-        offset: 200
+        duration: 200,
+        offset: 330
     });
 
     appearOnScroll(instructions, intro, {
         duration: 150,
-        offset: 550 
+        offset: 680 
     });
 }
 
@@ -356,12 +357,12 @@ function episodeOneScene() {
 function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.circle, intro, {
         duration: 100,
-        offset: 250 
+        offset: 380 
     });
 
     appearOnScroll(Episodes[1].element.title, intro, {
         duration: 75,
-        offset: 335
+        offset: 465
     });
 }
 
