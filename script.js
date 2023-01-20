@@ -207,7 +207,6 @@ function appearOnScroll(el, trigger, opts) {
     })
         .offset(opts && opts.offset || 0)
         .setTween(tween)
-        .addIndicators()
         .addTo(Controller)
 }
 
