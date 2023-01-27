@@ -1,0 +1,19 @@
+# ignore all files
+**/**
+
+# allow extensions
+!**/*.css
+!**/*.html
+!**/*.js
+!**/*.mp4
+!**/*.png
+!**/*.svg
+
+# allow individual folders
+!public/
+
+# allow individual files
+!.gitignore
+!index.html
+!script.js
+!styles.css

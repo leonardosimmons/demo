@@ -17,7 +17,7 @@ const BREAKPOINT_DESKTOP_LG = 2160;
 
 /* General */
 const BASE_URL = 'public'
-const EPISODE_COUNT_CURRENT = 2;
+const EPISODE_COUNT_CURRENT = 4;
 const EPISODE_COUNT_TOTAL = 8;
 
 /* 
@@ -46,9 +46,12 @@ const Episodes = [];
 /* Intro */
 const intro = document.querySelector( '.aic__intro' );
 const mainTitle = intro.querySelector( 'span' );
+const scrollArrow = intro.querySelector( '.aic__intro--scroll-arrow > img' );
 
 /* Content */
+const contentTrigger = document.querySelector( '#content-trigger' );
 const content = document.querySelector( '.aic__content' );
+const instructions = content.querySelector( 'h2' );
 const bgVideo = content.querySelector( 'video' );
 
 /* Modals */
@@ -68,6 +71,8 @@ function init() {
     introScene();
     episodeOneScene();
     episodeTwoScene();
+    episodeThreeScene();
+    episodeFourScene();
 }
 
 function generatePage() {
@@ -102,21 +107,9 @@ function generateEpisodes() {
 
         /* Add connecting line if NOT last node */
         if (episodeNum < EPISODE_COUNT_CURRENT) {
-            /* SVG capatability --WAITING FOR PHASE 2-- */
-            // const svg = document.querySelector( '.aic__ep--line' );
-            // if (svg) {
-            //     const clone = svg.cloneNode(true);
-
-            //     clone.classList.remove('hidden');
-            //     clone.classList.remove('aic__ep--line');
-            //     clone.classList.add('aic__ep--line-main');
-
-            //     section.querySelector( 'div' ).append(clone);
-            // }
-
             const mainLine = document.createElement('img');
             mainLine.classList.add(`aic__ep--line-main`);
-            mainLine.setAttribute('src', `${BASE_URL}/ep-line.png`);
+            mainLine.setAttribute('src', `${BASE_URL}/ep-${episodeNum}-main-line.png`);
             section.querySelector( 'div' ).append(mainLine);
         }
 
@@ -197,8 +190,19 @@ function closeEpisodeModal(modal) {
  * ----------------------- 
  */
 
+/* 
+struct Opts {
+    duration: 0,
+    offset: 0,
+    endOpacity: 0,
+    startOpacity: 0,
+    triggerHook: 0
+    tweenDuration: 0,
+}
+*/
+
 function appearOnScroll(el, trigger, opts) {
-    const tween = TweenMax.fromTo(el, opts && opts.tweenDuaration || 5, { opacity: 0 }, { opacity: 1 });
+    const tween = TweenMax.fromTo(el, opts && opts.tweenDuaration || 5, { opacity: opts && opts.startOpactiy || 0 }, { opacity: opts && opts.endOpactiy || 1 });
 
     new ScrollMagic.Scene({
         duration: opts && opts.duration || 0,
@@ -214,7 +218,7 @@ function draw(svg, trigger, opts) {
     const path = svg.querySelector( 'path' );
     preparePath(path);
 
-    const tween = TweenMax.to(path, 3, { strokeDashoffset: 0, ease: Linear.easeNone });
+    const tween = TweenMax.to(path, opts && opts.tweenDuaration || 3, { strokeDashoffset: 0, ease: Linear.easeNone });
 
     new ScrollMagic.Scene({
         duration: opts && opts.duration || 0,
@@ -227,7 +231,7 @@ function draw(svg, trigger, opts) {
 }
 
 function fadeOnScroll(el, trigger, opts) {
-    const tween = TweenMax.fromTo(el, 3, { opacity: 1 }, { opacity: 0 });
+    const tween = TweenMax.fromTo(el, opts && opts.tweenDuaration || 3, { opacity: opts && opts.startOpactiy || 1 }, { opacity: opts && opts.endOpactiy });
 
     new ScrollMagic.Scene({
         duration: opts && opts.duration || 0,
@@ -304,13 +308,14 @@ function introScene() {
     const scrolLTextAnim = TweenMax.fromTo(scrollText, 5, { opacity: 1 }, { opacity: 0 });
     const textFadeAnim = TweenMax.fromTo(mainTitle, 3, { opacity: 0.3 }, { opacity: 1 });
     const textDirectionAnim = TweenMax.to(mainTitle, 0.5, { scale: 1.2, repeat: 5, yoyo: true });
-    
-    timeline.add(scrolLTextAnim).add(textFadeAnim).add(textDirectionAnim);
+    const scrollDownAnim = TweenMax.fromTo(scrollArrow, 5, { opacity: 1 }, { opacity: 0 });
+
+    timeline.add(scrollDownAnim).add(scrolLTextAnim).add(textFadeAnim).add(textDirectionAnim);
 
     const duration = () => {
         const width = viewport().width;
 
-        if (width < BREAKPOINT_TABLET_SM) { return 300; } else
+        if (width < BREAKPOINT_TABLET_SM) { return 400; } else
         if (width >= BREAKPOINT_TABLET_SM && width < BREAKPOINT_TABLET_LG) { return 400; } else
         if (width >= BREAKPOINT_TABLET_LG && width < BREAKPOINT_DESKTOP_SM) { return 300; }else 
         if (width >= BREAKPOINT_DESKTOP_SM && width < BREAKPOINT_DESKTOP_MD) { return 350; } else
@@ -327,10 +332,7 @@ function introScene() {
         .addTo(Controller)
 }
 
-/* Episode 1 */
 function episodeOneScene() {
-    const instructions = content.querySelector( 'h2' );
-
     appearOnScroll(Episodes[0].element.circle, intro, { 
         duration: 100,
         offset: 280
@@ -352,7 +354,6 @@ function episodeOneScene() {
     });
 }
 
-/* Episode 2 */
 function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.circle, intro, {
         duration: 100,
@@ -362,6 +363,40 @@ function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.title, intro, {
         duration: 75,
         offset: 465
+    });
+
+    appearOnScroll(Episodes[1].element.line.main, intro, {
+        duration: 200,
+        offset: 435
+    });
+}
+
+function episodeThreeScene() {
+    appearOnScroll(Episodes[2].element.circle, intro, {
+        duration: 100,
+        offset: 480
+    });
+
+    appearOnScroll(Episodes[2].element.title, intro, {
+        duration: 75,
+        offset: 565
+    });
+
+    appearOnScroll(Episodes[2].element.line.main, intro, {
+        duration: 200,
+        offset: 535
+    });
+}
+
+function episodeFourScene() {
+    appearOnScroll(Episodes[3].element.circle, intro, {
+        duration: 100,
+        offset: 580
+    });
+
+    appearOnScroll(Episodes[3].element.title, intro, {
+        duration: 75,
+        offset: 665
     });
 }
 
