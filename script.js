@@ -163,7 +163,7 @@ function generateEpisodeModal(episodeNum) {
                 gyroscope; 
                 picture-in-picture; 
                 web-share" 
-                allowfullscreen>
+                allowfullscreen=${viewport().width > BREAKPOINT_DESKTOP_SM ? true : false}>
             </iframe>
         </div>
     `;
