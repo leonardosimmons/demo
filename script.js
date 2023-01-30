@@ -152,7 +152,7 @@ function generateEpisodeModal(episodeNum) {
      modal.innerHTML = `
         <div class="aic__modals--wrapper">
             <iframe 
-                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:95%;height:100%;margin: 0 auto;"  
+                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:${viewport().width > BREAKPOINT_DESKTOP_SM ? '95%' : viewport().width + 'px' };height:${viewport().width > BREAKPOINT_DESKTOP_SM ? '100%' : '315px'};margin: 0 auto; padding: 5px;"  
                 src=${EPISODE_LINKS[episodeNum -1]}
                 title="YouTube video player" 
                 frameborder="0" 
@@ -163,7 +163,7 @@ function generateEpisodeModal(episodeNum) {
                 gyroscope; 
                 picture-in-picture; 
                 web-share" 
-                allowfullscreen=${viewport().width > BREAKPOINT_DESKTOP_SM ? true : false}>
+                >
             </iframe>
         </div>
     `;
