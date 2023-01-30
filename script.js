@@ -17,7 +17,7 @@ const BREAKPOINT_DESKTOP_LG = 2160;
 
 /* General */
 const BASE_URL = 'public'
-const EPISODE_COUNT_CURRENT = 4;
+const EPISODE_COUNT_CURRENT = 3;
 const EPISODE_COUNT_TOTAL = 8;
 
 /* 
@@ -26,7 +26,7 @@ const EPISODE_COUNT_TOTAL = 8;
  * ----------------------- 
  */
 
-const EPISODE_LINKS = ['https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5',];
+const EPISODE_LINKS = ['https://www.youtube.com/embed/mKazCBAZHI4', 'https://www.youtube.com/embed/xA4Qwzq9-l8', 'https://www.youtube.com/embed/uLZJvnt7nZY', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5', 'https://player.vimeo.com/video/775360954?h=19337743c5',];
 
 /* 
  * -----------------------
@@ -151,11 +151,18 @@ function generateEpisodeModal(episodeNum) {
 
      modal.innerHTML = `
         <div class="aic__modals--wrapper">
-            <iframe
-                title="vimeo-player" 
-                src=${EPISODE_LINKS[episodeNum - 1]} 
-                frameborder="0"
+            <iframe 
                 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:95%;height:100%;margin: 0 auto;"  
+                src=${EPISODE_LINKS[episodeNum -1]}
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; 
+                autoplay; 
+                clipboard-write; 
+                encrypted-media; 
+                gyroscope; 
+                picture-in-picture; 
+                web-share" 
                 allowfullscreen>
             </iframe>
         </div>

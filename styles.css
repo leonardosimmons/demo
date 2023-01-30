@@ -77,7 +77,7 @@ body {
 
 .aic__content h2 {
     position: absolute;
-    top: 0;
+    top: -5%;
 
     margin-top: 30px;
 }
@@ -607,20 +607,217 @@ body {
 }
 
 @media only screen and (min-width: 520px) {
+    #aic__episode-1 .aic__ep--circle {
+        top: -35%;
+        left: 30%;
+    }
 
+    #aic__episode-1 .aic__ep--title {
+        top: -65%;
+        left: 8%;
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: -30%;
+        left: 35%;
+        
+        width: 80px;
+        height: 80px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -70%;
+        left: 48.5%;
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -65%;
+        left: 49.5%;
+
+        transform: scale(60%);
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -40%;
+        left: 36%;
+        
+        width: 75px;
+        height: 75px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -70%;
+        left: 31%;
+
+        transform: scale(60%);
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -35%;
+        left: 11%;
+
+        transform: scale(60%);
+    }
 }
 
 /* Tablet */
 @media only screen and (min-width: 720px) {
+    #aic__episode-1 .aic__ep--circle {
+        left: 39%;
+    }
 
+    #aic__episode-1 .aic__ep--title {
+        top: -70%;
+        left: 22.5%;
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: -15%;
+        left: 42.5%;
+        
+        width: 50px;
+        height: 50px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -70%;
+        left: 49%;
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        left: 49.5%;
+
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -35%;
+        left: 42%;
+        
+        width: 55px;
+        height: 55px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -80%;
+        left: 38.5%;
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -35%;
+        left: 23.5%;
+    }
 }
 
 @media only screen and (min-width: 760px) {
+    #aic__episode-1 .aic__ep--circle {
+        top: -35%;
+        left: 31%;
 
+        transform: scale(100%);
+    }
+
+    #aic__episode-1 .aic__ep--title {
+        top: -65%;
+        left: 13.5%;
+
+        transform: scale(85%);
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: -30%;
+        left: 35%;
+        
+        width: 105px;
+        height: 105px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -55%;
+        left: 50%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -55%;
+        left: 54%;
+
+        transform: scale(85%);
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -35%;
+        left: 37.5%;
+        
+        width: 95px;
+        height: 95px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -65%;
+        left: 32.5%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -30%;
+        left: 15.5%;
+
+        transform: scale(85%);
+    }
 }
 
 @media only screen and (min-width: 820px) {
+    #aic__episode-1 .aic__ep--circle {
+        left: 30%;
+    }
 
+    #aic__episode-1 .aic__ep--title {
+        top: -60%;
+        left: 13%;
+
+        transform: scale(85%);
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: -30%;
+        left: 35%;
+        
+        width: 115px;
+        height: 115px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -55%;
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -50%;
+        left: 54%;
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -35%;
+        left: 36%;
+        
+        width: 115px;
+        height: 115px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -55%;
+        left: 31.5%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -30%;
+        left: 15.5%;
+
+        transform: scale(85%);
+    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -629,34 +826,349 @@ body {
 
 /* Desktop */
 @media only screen and (min-width: 1020px) {
+    #aic__episode-1 .aic__ep--circle {
+        top: -35%;
+        left: 41%;
 
+        transform: scale(70%);
+    }
+
+    #aic__episode-1 .aic__ep--title {
+        top: -65%;
+        left: 29.5%;
+
+        transform: scale(60%);
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: -25%;
+        left: 43.5%;
+        
+        width: 65px;
+        height: 65px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -55%;
+        left: 50%;
+
+        transform: scale(70%);
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -55%;
+        left: 50.5%;
+
+        transform: scale(60%);
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -30%;
+        left: 44.5%;
+        
+        width: 65px;
+        height: 65px;
+
+        transform: rotate(15deg);
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -75%;
+        left: 41.5%;
+
+        transform: scale(70%);
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -30%;
+        left: 31%;
+
+        transform: scale(60%);
+    }
 }
 
 @media only screen and (min-width: 1200px) {
+    .aic__content h2 {
+        top: -7%;
 
+        font-size: 2rem;
+    }
+
+    #aic__episode-1 .aic__ep--circle {
+        top: 10%;
+        left: 41%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-1 .aic__ep--title {
+        top: -15%;
+        left: 30.5%;
+
+        transform: scale(80%);
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: 20%;
+        left: 44%;
+        
+        width: 80px;
+        height: 80px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -25%;
+        left: 50%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -20%;
+        left: 52%;
+
+        transform: scale(80%);
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -10%;
+        left: 44%;
+        
+        width: 85px;
+        height: 85px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -45%;
+        left: 41.5%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -5%;
+        left: 31.5%;
+
+        transform: scale(80%);
+    }
 }
 
 @media only screen and (min-width: 1360px) {
+    #aic__episode-1 .aic__ep--circle {
+        top: 15%;
+        left: 42%;
+    }
 
+    #aic__episode-1 .aic__ep--title {
+        top: -5%;
+        left: 31.5%;
+
+        transform: scale(80%);
+    }
 }
 
 @media only screen and (min-width: 1440px) {
+    #aic__episode-1 .aic__ep--circle {
+        left: 41%;
+    }
 
+    #aic__episode-1 .aic__ep--title {
+        left: 31.5%;
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        left: 43%;
+        
+        width: 90px;
+        height: 90px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -25%;
+        left: 50%;
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -10%;
+        left: 44%;
+        
+        width: 85px;
+        height: 85px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -45%;
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        left: 33%;
+    }
 }
 
 @media only screen and (min-width: 1530px) {
+    #aic__episode-1 .aic__ep--circle {
+        left: 42%;
+    }
 
+    #aic__episode-1 .aic__ep--title {
+        top: -15%;
+        left: 33%;
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        left: 33.5%;
+    }
 }
 
 @media only screen and (min-width: 1920px) {
     .aic__intro span {
         height: 250px;
     }
+
+    .aic__intro p {
+        font-size: 2.8rem;
+    }
+
+    .aic__content h2 {
+        font-size: 2.6rem;
+    }
+    .aic__intro--scroll-arrow img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .aic__social-icons img {
+        width: 60px;
+        height: 60px;
+    }
+
+    #aic__episode-1 .aic__ep--circle {
+        left: 42%;
+
+        transform: scale(110%);
+    }
+
+    #aic__episode-1 .aic__ep--title {
+        top: -10%;
+        left: 34%;
+
+        transform: scale(100%);
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: 20%;
+        left: 44%;
+        
+        width: 105px;
+        height: 105px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -20%;
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -10%;
+        left: 52.5%;
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: -5%;
+        left: 44%;
+        
+        width: 105px;
+        height: 105px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -40%;
+        left: 42%;
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: -5%;
+        left: 35.5%;
+    }
 }
 
 @media only screen and (min-width: 2560px) {
     .aic__intro span {
         height: 250px;
+    }
+
+    .aic__intro p {
+        width: 100%;
+        font-size: 3.6rem;
+    }
+
+    .aic__intro--scroll-arrow img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .aic__content h2 {
+        font-size: 3.6rem;
+    }
+
+    .aic__social-icons img {
+        width: 85px;
+        height: 85px;
+    }
+
+    #aic__episode-1 .aic__ep--circle {
+        left: 42%;
+
+        transform: scale(130%);
+    }
+
+    #aic__episode-1 .aic__ep--title {
+        left: 36%;
+
+        transform: scale(110%);
+    }
+
+    #aic__episode-1 .aic__ep--line-main {
+        top: 20%;
+        left: 44%;
+        
+        width: 145px;
+        height: 145px;
+    }
+
+    #aic__episode-2 .aic__ep--circle {
+        top: -10%;
+        left: 50.5%;
+
+        transform: scale(130%);
+    }
+
+    #aic__episode-2 .aic__ep--title {
+        top: -5%;
+        left: 53%;
+
+        transform: scale(110%);
+    }
+            
+    #aic__episode-2 .aic__ep--line-main {
+        top: 0;
+        left: 44.5%;
+        
+        width: 145px;
+        height: 145px;
+    }
+
+    #aic__episode-3 .aic__ep--circle {
+        top: -30%;
+        left: 42.5%;
+
+        transform: scale(130%);
+    }
+
+    #aic__episode-3 .aic__ep--title {
+        top: 0;
+        left: 36.5%;
+
+        transform: scale(110%);
     }
 }
 
