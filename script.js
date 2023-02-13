@@ -17,7 +17,7 @@ const BREAKPOINT_DESKTOP_LG = 2160;
 
 /* General */
 const BASE_URL = 'public'
-const EPISODE_COUNT_CURRENT = 6;
+const EPISODE_COUNT_CURRENT = 8;
 const EPISODE_COUNT_TOTAL = 8;
 
 /* 
@@ -26,7 +26,7 @@ const EPISODE_COUNT_TOTAL = 8;
  * ----------------------- 
  */
 
-const EPISODE_LINKS = ['https://www.youtube.com/embed/mKazCBAZHI4', 'https://www.youtube.com/embed/xA4Qwzq9-l8', 'https://www.youtube.com/embed/uLZJvnt7nZY', 'https://www.youtube.com/embed/NqoxANa8kL4', 'https://www.youtube.com/embed/EH4Dk2fGdFQ', 'https://www.youtube.com/embed/_cdGhotztH0', 'https://player.vimeo.com/video/775360954?h=19337743c5',];
+const EPISODE_LINKS = ['https://www.youtube.com/embed/mKazCBAZHI4', 'https://www.youtube.com/embed/xA4Qwzq9-l8', 'https://www.youtube.com/embed/uLZJvnt7nZY', 'https://www.youtube.com/embed/NqoxANa8kL4', 'https://www.youtube.com/embed/EH4Dk2fGdFQ', 'https://www.youtube.com/embed/OnegTLpfGdc', '"https://www.youtube.com/embed/OnegTLpfGdc', 'https://www.youtube.com/embed/0OFliVeOkCY'];
 
 /* 
  * -----------------------
@@ -75,6 +75,8 @@ function init() {
     episodeFourScene();
     episodeFiveScene();
     episodeSixScene();
+    episodeSevenScene();
+    episodeEightScene();
 }
 
 function generatePage() {
@@ -366,86 +368,116 @@ function episodeOneScene() {
 function episodeTwoScene() {
     appearOnScroll(Episodes[1].element.circle, intro, {
         duration: 100,
-        offset: 380 
+        offset: 355 
     });
 
     appearOnScroll(Episodes[1].element.title, intro, {
         duration: 75,
-        offset: 465
+        offset: 440
     });
 
     appearOnScroll(Episodes[1].element.line.main, intro, {
         duration: 200,
-        offset: 435
+        offset: 415
     });
 }
 
 function episodeThreeScene() {
     appearOnScroll(Episodes[2].element.circle, intro, {
         duration: 100,
-        offset: 480
+        offset: 430
     });
 
     appearOnScroll(Episodes[2].element.title, intro, {
         duration: 75,
-        offset: 565
+        offset: 515
     });
 
     appearOnScroll(Episodes[2].element.line.main, intro, {
         duration: 200,
-        offset: 535
+        offset: 490
     });
 }
 
 function episodeFourScene() {
     appearOnScroll(Episodes[3].element.circle, intro, {
         duration: 100,
-        offset: 580
+        offset: 505
     });
 
     appearOnScroll(Episodes[3].element.title, intro, {
         duration: 75,
-        offset: 665
+        offset: 590
     });
 
     appearOnScroll(Episodes[3].element.line.main, intro, {
         duration: 200,
-        offset: 635
+        offset: 565
     });
 }
 
 function episodeFiveScene() {
     appearOnScroll(Episodes[4].element.circle, intro, {
         duration: 100,
-        offset: 680
+        offset: 580
     });
 
     appearOnScroll(Episodes[4].element.title, intro, {
         duration: 75,
-        offset: 765
+        offset: 665
     });
 
     appearOnScroll(Episodes[4].element.line.main, intro, {
         duration: 200,
-        offset: 735
+        offset: 640
     });
 }
 
 function episodeSixScene() {
     appearOnScroll(Episodes[5].element.circle, intro, {
         duration: 100,
-        offset: 780
+        offset: 655
     });
 
     appearOnScroll(Episodes[5].element.title, intro, {
         duration: 75,
-        offset: 865
+        offset: 715
+    });
+
+    appearOnScroll(Episodes[5].element.line.main, intro, {
+        duration: 200,
+        offset: 735
     });
 }
 
+function episodeSevenScene() {
+    appearOnScroll(Episodes[6].element.circle, intro, {
+        duration: 100,
+        offset: 730
+    });
 
+    appearOnScroll(Episodes[6].element.title, intro, {
+        duration: 75,
+        offset: 790
+    });
 
+    appearOnScroll(Episodes[6].element.line.main, intro, {
+        duration: 200,
+        offset: 805
+    });
+}
 
+function episodeEightScene() {
+    appearOnScroll(Episodes[7].element.circle, intro, {
+        duration: 100,
+        offset: 760
+    });
+
+    appearOnScroll(Episodes[7].element.title, intro, {
+        duration: 75,
+        offset: 825
+    });
+}
 
 /* 
  * -----------------------
