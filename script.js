@@ -16,7 +16,7 @@ const BREAKPOINT_DESKTOP_MD = 1536;
 const BREAKPOINT_DESKTOP_LG = 2160;
 
 /* General */
-const BASE_URL = 'public'
+const BASE_URL = `${window.location.origin}/public`;
 const EPISODE_COUNT_CURRENT = 8;
 const EPISODE_COUNT_TOTAL = 8;
 
@@ -156,7 +156,7 @@ function generateEpisodeModal(episodeNum) {
      modal.innerHTML = `
         <div class="aic__modals--wrapper">
             <iframe 
-                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:${viewport().width > BREAKPOINT_DESKTOP_SM ? '95%' : viewport().width + 'px' };height:${viewport().width > BREAKPOINT_DESKTOP_SM ? '100%' : '315px'};margin: 0 auto; padding: 5px;"  
+                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:${viewport().width > BREAKPOINT_DESKTOP_SM ? '95%' : (viewport().width * .95) + 'px' };height:${viewport().width > BREAKPOINT_DESKTOP_SM ? '100%' : '315px'};margin: 0 auto; padding: 5px;"  
                 src=${EPISODE_LINKS[episodeNum -1]}
                 title="YouTube video player" 
                 frameborder="0" 
