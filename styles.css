@@ -198,6 +198,7 @@ body {
     left: 25%;
 
     transform: scale(65%);
+    cursor: pointer;
 }
 
 #aic__episode-1 .aic__ep--title {
@@ -234,6 +235,7 @@ body {
     left: 7%;
 
     transform: scale(25%);
+    cursor: pointer;
 }
 
 #aic__episode-2 .aic__ep--circle {
@@ -242,6 +244,7 @@ body {
     left: 47%;
 
     transform: scale(50%);
+    cursor: pointer;
 }
 
 #aic__episode-2 .aic__ep--title {
@@ -269,6 +272,7 @@ body {
     left: 25%;
 
     transform: scale(45%);
+    cursor: pointer;
 }
 
 #aic__episode-3 .aic__ep--title {
@@ -296,6 +300,7 @@ body {
     left: 70%;
 
     transform: scale(45%);
+    cursor: pointer;
 }
 
 #aic__episode-4 .aic__ep--title {
@@ -323,6 +328,7 @@ body {
     left: 35%;
 
     transform: scale(50%);
+    cursor: pointer;
 }
 
 #aic__episode-5 .aic__ep--title {
@@ -350,6 +356,7 @@ body {
     left: 68.5%;
 
     transform: scale(50%);
+    cursor: pointer;
 }
 
 #aic__episode-6 .aic__ep--title {
@@ -377,6 +384,7 @@ body {
     left: 28.5%;
 
     transform: scale(45%);
+    cursor: pointer;
 }
 
 #aic__episode-7 .aic__ep--title {
@@ -404,6 +412,7 @@ body {
     left: 62.5%;
 
     transform: scale(37.5%);
+    cursor: pointer;
 }
 
 #aic__episode-8 .aic__ep--title {
@@ -1930,7 +1939,7 @@ body {
     }
 
     #aic__episode-8 .aic__ep--title {
-        top: 5%;
+        top: 10%;
         left: 58.5%;
 
         transform: scale(170%);

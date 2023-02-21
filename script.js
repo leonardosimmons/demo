@@ -31,8 +31,8 @@ const EPISODE_LINKS = [
     'https://www.youtube.com/embed/xA4Qwzq9-l8',
     'https://www.youtube.com/embed/uLZJvnt7nZY',
     'https://www.youtube.com/embed/NqoxANa8kL4',
-    'https://www.youtube.com/embed/EH4Dk2fGdFQ',
-    'https://www.youtube.com/embed/OnegTLpfGdc',
+    'https://www.youtube.com/embed/Zl_6Tu5EZME',
+    'https://www.youtube.com/embed/_cdGhotztH0',
     'https://www.youtube.com/embed/OnegTLpfGdc',
     'https://www.youtube.com/embed/0OFliVeOkCY',
 ];
