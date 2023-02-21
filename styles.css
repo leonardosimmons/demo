@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-html  { 
+html {
     font-size: 62.5%;
     scroll-behavior: smooth;
 }
@@ -42,7 +42,7 @@ body {
 
     font-size: 18px;
     font-weight: bold;
-    color: white; 
+    color: white;
     background: none;
     cursor: pointer;
     outline: inherit;
@@ -57,7 +57,7 @@ body {
 
     width: 100%;
     height: 100vh;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,10 +98,9 @@ body {
 .aic__intro video {
     width: 100%;
     height: 100%;
-    
+
     object-fit: contain;
 }
-
 
 .aic__intro p {
     width: 80%;
@@ -135,7 +134,7 @@ body {
     position: relative;
 
     width: 100%;
-    height: 100%; 
+    height: 100%;
 }
 
 .aic__ep--circle {
@@ -158,7 +157,7 @@ body {
 
     margin: 20px auto;
 
-    background-image: url("public/video-box-light.png");
+    background-image: url('public/video-box-light.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -170,13 +169,12 @@ body {
 
 .aic__social-icons {
     width: 30%;
-    max-width: 300px; 
+    max-width: 300px;
 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 1rem;
-
 }
 
 .aic__social-icons a:active {
@@ -214,11 +212,28 @@ body {
     position: absolute;
     top: 60%;
     left: 33%;
-    
+
     width: 45px;
     height: 45px;
 
     transform: rotate(-15deg);
+}
+
+#aic__episode-1 .aic__ep--aux-line-1 {
+    position: absolute;
+    top: 75%;
+    left: 15%;
+
+    width: 35px;
+    height: 35px;
+}
+
+#aic__episode-1 .aic__ep--aux-dot-1 {
+    position: absolute;
+    top: 110%;
+    left: 7%;
+
+    transform: scale(25%);
 }
 
 #aic__episode-2 .aic__ep--circle {
@@ -241,7 +256,7 @@ body {
     position: absolute;
     top: 30%;
     left: 33%;
-    
+
     width: 50px;
     height: 50px;
 
@@ -268,7 +283,7 @@ body {
     position: absolute;
     top: -30%;
     left: 41.5%;
-    
+
     width: 95px;
     height: 95px;
 
@@ -295,7 +310,7 @@ body {
     position: absolute;
     top: -40%;
     left: 47%;
-    
+
     width: 60px;
     height: 60px;
 
@@ -322,7 +337,7 @@ body {
     position: absolute;
     top: -60%;
     left: 47%;
-    
+
     width: 80px;
     height: 80px;
 
@@ -349,7 +364,7 @@ body {
     position: absolute;
     top: -85%;
     left: 41.5%;
-    
+
     width: 70px;
     height: 70px;
 
@@ -376,7 +391,7 @@ body {
     position: absolute;
     top: -95%;
     left: 37.5%;
-    
+
     width: 85px;
     height: 85px;
 
@@ -399,7 +414,6 @@ body {
     transform: scale(55%);
 }
 
-
 /* 
  * -----------------------
  * Helpers
@@ -421,7 +435,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    
+
     width: 100%;
     height: 100vh;
 
@@ -435,8 +449,8 @@ body {
  * ----------------------- 
  */
 
- /* Mobile */
- @media only screen and (min-width: 360px) { 
+/* Mobile */
+@media only screen and (min-width: 360px) {
     #aic__episode-1 .aic__ep--circle {
         top: 5%;
         left: 27%;
@@ -454,9 +468,24 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 20%;
         left: 34.5%;
-        
+
         width: 55px;
         height: 55px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-line-1 {
+        top: 45%;
+        left: 16%;
+
+        width: 45px;
+        height: 45px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-dot-1 {
+        top: 90%;
+        left: 10%;
+
+        transform: scale(40%);
     }
 
     #aic__episode-2 .aic__ep--circle {
@@ -472,11 +501,11 @@ body {
 
         transform: scale(55%);
     }
-    
+
     #aic__episode-2 .aic__ep--line-main {
         top: 0;
         left: 32.5%;
-        
+
         width: 60px;
         height: 60px;
     }
@@ -499,7 +528,7 @@ body {
         position: absolute;
         top: -65%;
         left: 43%;
-        
+
         width: 125px;
         height: 125px;
     }
@@ -522,7 +551,7 @@ body {
 
     #aic__episode-4 .aic__ep--line-main {
         top: -55%;
-        
+
         width: 80px;
         height: 80px;
     }
@@ -544,7 +573,7 @@ body {
     #aic__episode-5 .aic__ep--line-main {
         top: -65%;
         left: 47%;
-        
+
         width: 100px;
         height: 100px;
 
@@ -568,7 +597,7 @@ body {
     #aic__episode-6 .aic__ep--line-main {
         top: -85%;
         left: 40%;
-        
+
         width: 90px;
         height: 90px;
     }
@@ -590,7 +619,7 @@ body {
     #aic__episode-7 .aic__ep--line-main {
         top: -80%;
         left: 36.5%;
-        
+
         width: 110px;
         height: 110px;
     }
@@ -608,7 +637,7 @@ body {
 
         transform: scale(65%);
     }
- }
+}
 
 @media only screen and (min-width: 370px) {
     #aic__episode-1 .aic__ep--circle {
@@ -624,9 +653,17 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: -40%;
         left: 33%;
-        
+
         width: 60px;
         height: 60px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-line-1 {
+        top: -15%;
+    }
+
+    #aic__episode-1 .aic__ep--aux-dot-1 {
+        top: 40%;
     }
 
     #aic__episode-2 .aic__ep--circle {
@@ -637,11 +674,11 @@ body {
         top: -80%;
         left: 48%;
     }
-        
+
     #aic__episode-2 .aic__ep--line-main {
         top: -50%;
         left: 33.5%;
-        
+
         width: 60px;
         height: 60px;
     }
@@ -658,7 +695,7 @@ body {
 
     #aic__episode-3 .aic__ep--line-main {
         top: -100%;
-        
+
         width: 130px;
         height: 130px;
     }
@@ -674,7 +711,7 @@ body {
 
     #aic__episode-4 .aic__ep--line-main {
         top: -85%;
-        
+
         width: 85px;
         height: 85px;
     }
@@ -695,7 +732,7 @@ body {
     #aic__episode-5 .aic__ep--line-main {
         top: -80%;
         left: 45%;
-        
+
         width: 110px;
         height: 110px;
 
@@ -719,7 +756,7 @@ body {
     #aic__episode-6 .aic__ep--line-main {
         top: -80%;
         left: 40%;
-        
+
         width: 95px;
         height: 95px;
     }
@@ -737,7 +774,7 @@ body {
     #aic__episode-7 .aic__ep--line-main {
         top: -60%;
         left: 36%;
-        
+
         width: 115px;
         height: 115px;
     }
@@ -772,9 +809,19 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 40%;
         left: 32%;
-        
+
         width: 65px;
         height: 65px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-line-1 {
+        top: 50%;
+        left: 16%;
+    }
+
+    #aic__episode-1 .aic__ep--aux-dot-1 {
+        top: 90%;
+        left: 10%;
     }
 
     #aic__episode-2 .aic__ep--circle {
@@ -788,11 +835,11 @@ body {
 
         transform: scale(55%);
     }
-        
+
     #aic__episode-2 .aic__ep--line-main {
         top: 15%;
         left: 33%;
-        
+
         width: 60px;
         height: 60px;
     }
@@ -804,10 +851,10 @@ body {
     #aic__episode-3 .aic__ep--title {
         top: -10%;
     }
-    
+
     #aic__episode-3 .aic__ep--line-main {
         top: -50%;
-        
+
         width: 135px;
         height: 135px;
     }
@@ -822,7 +869,7 @@ body {
 
     #aic__episode-4 .aic__ep--line-main {
         top: -60%;
-        
+
         width: 85px;
         height: 85px;
     }
@@ -836,13 +883,12 @@ body {
     #aic__episode-5 .aic__ep--title {
         top: -85%;
         left: 8.5%;
-
     }
 
     #aic__episode-5 .aic__ep--line-main {
         top: -80%;
         left: 45%;
-        
+
         width: 120px;
         height: 120px;
     }
@@ -860,7 +906,7 @@ body {
     #aic__episode-6 .aic__ep--line-main {
         top: -80%;
         left: 41%;
-        
+
         width: 95px;
         height: 95px;
     }
@@ -878,7 +924,7 @@ body {
 
         transform: scale(80%);
     }
-    
+
     #aic__episode-7 .aic__ep--line-main {
         top: -80%;
         left: 38.5%;
@@ -910,7 +956,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 40%;
         left: 32%;
-        
+
         width: 70px;
         height: 70px;
     }
@@ -926,11 +972,11 @@ body {
 
         transform: scale(60%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: 15%;
         left: 33%;
-        
+
         width: 70px;
         height: 70px;
     }
@@ -949,7 +995,7 @@ body {
 
     #aic__episode-3 .aic__ep--line-main {
         top: -40%;
-        
+
         width: 145px;
         height: 145px;
     }
@@ -990,7 +1036,7 @@ body {
     #aic__episode-5 .aic__ep--line-main {
         top: -70%;
         left: 47.5%;
-        
+
         width: 120px;
         height: 120px;
     }
@@ -1005,14 +1051,14 @@ body {
     #aic__episode-6 .aic__ep--title {
         top: -55%;
         left: 69%;
-    
+
         transform: scale(80%);
     }
 
     #aic__episode-6 .aic__ep--line-main {
         top: -85%;
         left: 41%;
-        
+
         width: 100px;
         height: 100px;
     }
@@ -1030,11 +1076,11 @@ body {
 
         transform: scale(85%);
     }
-    
+
     #aic__episode-7 .aic__ep--line-main {
         top: -80%;
         left: 38.5%;
-        
+
         width: 120px;
         height: 120px;
     }
@@ -1066,7 +1112,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: -30%;
         left: 35%;
-        
+
         width: 80px;
         height: 80px;
     }
@@ -1082,11 +1128,11 @@ body {
 
         transform: scale(60%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -40%;
         left: 36%;
-        
+
         width: 75px;
         height: 75px;
     }
@@ -1120,7 +1166,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: -15%;
         left: 42.5%;
-        
+
         width: 50px;
         height: 50px;
     }
@@ -1132,13 +1178,12 @@ body {
 
     #aic__episode-2 .aic__ep--title {
         left: 49.5%;
-
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -35%;
         left: 42%;
-        
+
         width: 55px;
         height: 55px;
     }
@@ -1172,7 +1217,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: -30%;
         left: 35%;
-        
+
         width: 105px;
         height: 105px;
     }
@@ -1190,11 +1235,11 @@ body {
 
         transform: scale(85%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -35%;
         left: 37.5%;
-        
+
         width: 95px;
         height: 95px;
     }
@@ -1229,7 +1274,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: -30%;
         left: 35%;
-        
+
         width: 115px;
         height: 115px;
     }
@@ -1242,11 +1287,11 @@ body {
         top: -50%;
         left: 54%;
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -35%;
         left: 36%;
-        
+
         width: 115px;
         height: 115px;
     }
@@ -1267,7 +1312,6 @@ body {
 }
 
 @media only screen and (min-width: 900px) {
-
 }
 
 /* Desktop */
@@ -1289,7 +1333,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: -25%;
         left: 43.5%;
-        
+
         width: 65px;
         height: 65px;
     }
@@ -1307,11 +1351,11 @@ body {
 
         transform: scale(60%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -30%;
         left: 44.5%;
-        
+
         width: 65px;
         height: 65px;
 
@@ -1357,7 +1401,7 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 20%;
         left: 44%;
-        
+
         width: 80px;
         height: 80px;
     }
@@ -1375,11 +1419,11 @@ body {
 
         transform: scale(80%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -10%;
         left: 44%;
-        
+
         width: 85px;
         height: 85px;
     }
@@ -1424,7 +1468,7 @@ body {
 
     #aic__episode-1 .aic__ep--line-main {
         left: 43%;
-        
+
         width: 90px;
         height: 90px;
     }
@@ -1433,11 +1477,11 @@ body {
         top: -25%;
         left: 50%;
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -10%;
         left: 44%;
-        
+
         width: 85px;
         height: 85px;
     }
@@ -1504,9 +1548,24 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 20%;
         left: 44%;
-        
+
         width: 105px;
         height: 105px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-line-1 {
+        top: 35%;
+        left: 38.5%;
+
+        width: 70px;
+        height: 70px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-dot-1 {
+        top: 80%;
+        left: 37.5%;
+
+        transform: scale(50%);
     }
 
     #aic__episode-2 .aic__ep--circle {
@@ -1519,11 +1578,11 @@ body {
 
         transform: scale(100%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: -5%;
         left: 44%;
-        
+
         width: 105px;
         height: 105px;
     }
@@ -1539,11 +1598,11 @@ body {
 
         transform: scale(100%);
     }
-            
+
     #aic__episode-3 .aic__ep--line-main {
         top: -80%;
         left: 46.5%;
-        
+
         width: 275px;
         height: 275px;
     }
@@ -1566,7 +1625,7 @@ body {
         position: absolute;
         top: -70%;
         left: 48%;
-        
+
         width: 160px;
         height: 160px;
 
@@ -1593,7 +1652,7 @@ body {
         position: absolute;
         top: -75%;
         left: 48%;
-        
+
         width: 220px;
         height: 220px;
 
@@ -1619,7 +1678,7 @@ body {
     #aic__episode-6 .aic__ep--line-main {
         top: -80%;
         left: 46.5%;
-        
+
         width: 160px;
         height: 160px;
     }
@@ -1637,11 +1696,11 @@ body {
 
         transform: scale(130%);
     }
-    
+
     #aic__episode-7 .aic__ep--line-main {
         top: -80%;
         left: 45.5%;
-        
+
         width: 200px;
         height: 200px;
     }
@@ -1701,10 +1760,24 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 20%;
         left: 44%;
-        
+
         width: 145px;
         height: 145px;
+    }
 
+    #aic__episode-1 .aic__ep--aux-line-1 {
+        top: 30%;
+        left: 38.5%;
+
+        width: 90px;
+        height: 90px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-dot-1 {
+        top: 80%;
+        left: 37.5%;
+
+        transform: scale(70%);
     }
 
     #aic__episode-2 .aic__ep--circle {
@@ -1720,11 +1793,11 @@ body {
 
         transform: scale(140%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: 0;
         left: 44.5%;
-        
+
         width: 145px;
         height: 145px;
     }
@@ -1742,11 +1815,11 @@ body {
 
         transform: scale(140%);
     }
-            
+
     #aic__episode-3 .aic__ep--line-main {
         top: -70%;
         left: 46.5%;
-        
+
         width: 350px;
         height: 350px;
     }
@@ -1769,7 +1842,7 @@ body {
         position: absolute;
         top: -60%;
         left: 48.5%;
-        
+
         width: 190px;
         height: 190px;
 
@@ -1796,7 +1869,7 @@ body {
         position: absolute;
         top: -75%;
         left: 48%;
-        
+
         width: 270px;
         height: 270px;
 
@@ -1822,7 +1895,7 @@ body {
     #aic__episode-6 .aic__ep--line-main {
         top: -80%;
         left: 46.5%;
-        
+
         width: 200px;
         height: 200px;
     }
@@ -1840,11 +1913,11 @@ body {
 
         transform: scale(190%);
     }
-    
+
     #aic__episode-7 .aic__ep--line-main {
         top: -80%;
         left: 45.5%;
-        
+
         width: 260px;
         height: 260px;
     }
@@ -1881,10 +1954,24 @@ body {
     #aic__episode-1 .aic__ep--line-main {
         top: 20%;
         left: 44%;
-        
-        width: 145px;
-        height: 145px;
 
+        width: 165px;
+        height: 165px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-line-1 {
+        top: 30%;
+        left: 38%;
+
+        width: 110px;
+        height: 110px;
+    }
+
+    #aic__episode-1 .aic__ep--aux-dot-1 {
+        top: 80%;
+        left: 37%;
+
+        transform: scale(80%);
     }
 
     #aic__episode-2 .aic__ep--circle {
@@ -1900,11 +1987,11 @@ body {
 
         transform: scale(170%);
     }
-            
+
     #aic__episode-2 .aic__ep--line-main {
         top: 0;
         left: 44%;
-        
+
         width: 160px;
         height: 160px;
     }
@@ -1922,11 +2009,11 @@ body {
 
         transform: scale(180%);
     }
-            
+
     #aic__episode-3 .aic__ep--line-main {
         top: -60%;
         left: 46.25%;
-        
+
         width: 385px;
         height: 385px;
     }
@@ -1948,7 +2035,7 @@ body {
     #aic__episode-4 .aic__ep--line-main {
         top: -60%;
         left: 48.5%;
-        
+
         width: 220px;
         height: 220px;
 
@@ -1972,7 +2059,7 @@ body {
     #aic__episode-5 .aic__ep--line-main {
         top: -75%;
         left: 48%;
-        
+
         width: 310px;
         height: 310px;
 
@@ -1996,7 +2083,7 @@ body {
     #aic__episode-6 .aic__ep--line-main {
         top: -70%;
         left: 46.5%;
-        
+
         width: 230px;
         height: 230px;
     }
@@ -2014,11 +2101,11 @@ body {
 
         transform: scale(250%);
     }
-    
+
     #aic__episode-7 .aic__ep--line-main {
         top: -75%;
         left: 45.5%;
-        
+
         width: 320px;
         height: 320px;
     }
